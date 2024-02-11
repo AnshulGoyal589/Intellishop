@@ -3,7 +3,7 @@ const router =  express.Router();
 const Product = require("../models/Product");
 const {isLoggedIn}=require("../middleware");
 const mongoose = require("mongoose");
-const dotenv = require('dotenv');  
+require('dotenv').config();  
 const axios = require('axios');
 const Review = require("../models/Review");
 const app = express();
