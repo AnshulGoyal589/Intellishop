@@ -1,5 +1,4 @@
-<% layout('layout/boilerplate') -%>
-
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +11,7 @@
         #season{
             font-size: 90px;
             -webkit-text-stroke: 2px black;
-            color: white;
+            color: black;
             font-weight: 1000;
         }
         #season2{
@@ -35,20 +34,223 @@
             font-size: 18px;
             font-weight: 500;
         }
+        #li{
+            display: inline-block;
+            color:black;
+            margin:auto 10px;
+            font-size: 25px;
+        }
+        #a{
+            color:black;
+            text-decoration: none;
+            display: inline-block;
+        }
+        #abc{
+            display: flex;
+            padding-top: 11px;
+        } 
+        .main:hover{
+        text-decoration-skip-ink: auto;
+        margin-bottom: 14px !important;
+        border-bottom: 2px solid lightblue !important; 
+        padding-bottom: 4px !important;
+        color: lightblue !important;
+        }
+        li{
+    height: fit-content !important;
+    width: fit-content !important;
+    font-size: 25px;
+  }
+  .message{
+    background-color: white;
+    margin-top: 10px;
+    text-align: start;
+    width: fit-content;
+    padding: 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+  }
+  .message2{
+    background-color: lightblue;
+    margin-top: 10px;
+    width: fit-content;
+    position: relative;
+    left:70px;
+    width: 150px;
+    padding: 5px;
+    border-radius: 5px;
+  }
+  #open-chat-button {
+            font-size: 50px;
+            color: #4b6cb7;
+            position: fixed;
+            right: 60px;
+            bottom: 25px;
+            background-color: #f0f0f0;
+            border-radius: 50%;
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        #cloud-container {
+            position: fixed;
+            right: 5px;
+            bottom: 95px;
+            opacity: 1;
+            transition: opacity 0.3s;
+        }
+
+        .cloud {
+            background-color: #fff;
+            border-radius: 20px;
+            padding: 10px;
+            display: inline-block;
+            margin: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
     </style>
 </head>
-<div style="background-repeat: no-repeat;background-size: cover;background-position: center ;height: 90vh;width: 100vw;background-image: url('https://dobedishop.com/wp-content/uploads/2020/11/home-4-4.jpg');" >
-<div id="seasonCont" >
+<body>
+    
+<nav class="navbar navbar-expand-lg bg-body-tertiary" style="color: black;height:80px;z-index: 1001 !important;background-color:#f1eee1;border-bottom: 1px solid black;">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" style="display: flex;justify-content: space-between;" id="navbarText" >
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="display: flex;flex-direction: row;justify-content: center;align-items: center;gap:10px;">
+          <li class="nav-item" style="height:80px !important;">
+            <img style="width:65px;height:65px;position: relative;position: relative;bottom:5px;" src="https://i.pinimg.com/236x/26/52/1c/26521c92c945a36497af5917359c5588--monogram-logo-nespresso.jpg" alt="">
+            <a class="navbar" style="color: black;font-size: 36px;position: relative;display: inline-block;text-decoration: none;margin-left: 10px;">NexusMart</a>
+          </li>
+          <li class="nav-item" style="margin-left: 10px;">
+            
+              <a class=" main " href="/" style="text-decoration: none;color:black;font-size: 25px;margin-left: 15px;">Home</a>   
+          </li>
+          <li class="nav-item" >
+            
+              <a class=" main " href="/products" style="text-decoration: none;color:black;font-size: 25px;margin-left: 15px;">Products</a>   
+          </li>  
+          <li class="nav-item">
+                <a class=" main " href="/products/addProd" style="text-decoration: none;color:black;font-size: 25px;margin-left: 15px;">Add Product</a>
+          </li>
+          <% if(currentUser){ %>
+            <i class="fa-solid fa-cart-shopping fa-2xl" style="color:black;position: relative;top:10px " onclick="window.location.href='/products/<%= currentUser._id  %>/cart'">
+            <sup><span class="translate-middle badge rounded-pill bg-danger">
+              <%=currentUser.totalItems  %>
+              </span>
+            </sup>
+            </i>
+          <% } %>
+        </ul>    
+         
+<% if(!currentUser){ %> 
+          <ul id="abc" style="display: flex;justify-content: end;" >
+            <li id="li" class=" main " ><a href="/login" id="a">Login</a></li>
+            <li id="li" class=" main " ><a href="/register" id="a">SignUp</a></li>
+          </ul>
+        <% }else{ %>
+            <ul style="display: flex;align-items: center;justify-content: center;padding-top: 7px;">
+              <li id="li" ><i class="fa-solid fa-user fa-xl"></i><a href="/userProfile" style="text-decoration: none;color:black; text-align: center;">
+                <%= currentUser.username  %> 
+              </a></li>
+              <li id="li"><a href="/logout" id="a">Logout</a></li>
+            </ul>
+        <% } %>
+        
+
+      </div>
+    </div>
+  
+</nav>
+<div style="background-repeat: no-repeat;background-size: cover;background-position: center ;height: 89vh;width: 99vw;background-image: url('/images/home3.jpg');" >
+<!-- <div id="seasonCont" >
     <div id="season" >Season</div>
 <div id="season2" >sale</div>
 </div>
 <div id="seasContent" >Enjoy the winter time and shop our products
     at up to 50% off, for a limited time.
+</div> -->
 </div>
-</div>
+<div id="chat-container" style="border: 2px solid black; height: 300px; width: 250px; background-color: #e5e5e5; position: fixed; right: 10px; bottom: 95px; overflow: hidden; display: flex; flex-direction: column; display: none;">
+    <div id="chat-messages" style="max-height: 250px; overflow-y: auto; color: black;min-height: 252px;">
+        <!-- Your chat messages go here -->
+    </div>
+    <form style="display: flex; margin-top: auto;" onsubmit="event.preventDefault() ; sendMessage()" >
+        <input type="text" id="user-message" style="flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 5px; width: 200px;" placeholder="Type a message..." />
+        <!-- <button onclick="sendMessage()" style="background-color: #007bff; color: #fff; padding: 5px; border: none; border-radius: 5px; cursor: pointer;">Send</button> -->
+    </form>
+  </div>
+<i id="open-chat-button" class="fa-solid fa-robot" onclick="toggleChat()"></i>
+  <div id="cloud-container">
+    <div class="cloud">Hey There!</div>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>  
+  <script src="/public/js/cartTemp.js"></script>
+  <script>
+function toggleChat() {
+  const chatContainer = document.getElementById('chat-container');
+  const chatText = document.getElementsByClassName("cloud")[0];
+  const cloudContainer = document.getElementById("cloud-container");
+
+  if (chatContainer.style.display === 'none') {
+      // If chat container is currently hidden, show it and fade in the text
+    
+      chatContainer.style.display = 'block';
+      chatText.style.opacity = "0";
+      cloudContainer.style.opacity = '0';
+  } else {
+      // If chat container is currently visible, hide it and fade out the text
+      chatContainer.style.display = 'none';
+      chatText.style.opacity = "1";
+      cloudContainer.style.opacity = '1';
+  }
+}
+
+  </script>
+  <script>
+    function appendMessage(user, bot) {
+      const chatMessages = document.getElementById('chat-messages');
+      const messageDiv = document.createElement('div');
+      const messageDiv2 = document.createElement('div');
+      messageDiv.className = 'message';
+      messageDiv2.className = 'message2';
+      messageDiv.innerHTML = `<span class="user-message">User: ${user}</span>`;
+      messageDiv2.innerHTML = `<span class="bot-message">Bot: ${bot}</span>`;
+      chatMessages.appendChild(messageDiv);
+      chatMessages.appendChild(messageDiv2);
+    }
+
+    function sendMessage() {
+      const userMessage = document.getElementById('user-message').value;
+
+
+      fetch('/chat/predict', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({userMessage }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          const botResponse = data.botResponse;
+          
+          appendMessage(userMessage, botResponse);
+        });
+
+      document.getElementById('user-message').value = ''; 
+    }
+  </script>
+  
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
 integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
 crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
 integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
 crossorigin="anonymous"></script>
+</body>
+</html>

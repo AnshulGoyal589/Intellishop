@@ -43,13 +43,16 @@
             background-color: var(--primary-bg);
         }
         #hero:hover {
-            box-shadow: 5px 5px 10px white, -5px -5px 10px white;
-            border: 5px solid var(--text-color) !important;
+            box-shadow: 2px 2px 5px black, -2px -2px 5px black;
+            border: 2px solid black !important;
             cursor: pointer;
+            border-radius: 20px;
         }
         img:hover {
             transform: scale(1.1);
             transition-duration: 0.7s;
+            border-radius: 20px !important;
+            overflow: hidden;
         }
         #delete {
             background-color: #D3D3D3;
@@ -68,17 +71,6 @@
   }
   label {
     font-weight: bold;
-  }
-  input[type="range"] {
-    width: 100%;
-    margin: 10px 0;
-    -webkit-appearance: none;
-    height: 10px;
-    background: #d3d3d3;
-    outline: none;
-    opacity: 0.7;
-    -webkit-transition: 0.2s;
-    transition: opacity 0.2s;
   }
 
   input[type="range"]::-webkit-slider-thumb {
@@ -137,6 +129,19 @@
     color: #007bff;
     cursor: pointer;
   }
+  #pp {
+        text-align: center;
+        font-size: 35px;
+        font-weight: 900;
+        background-color: #ddb892; 
+        padding: 20px;
+        color: black; /* Light Gray */
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
   #li:hover {
     color: #ff5722; 
   }
@@ -181,47 +186,56 @@
             font-size: 18px;
             margin-left: 5px;
         }
+        /* Updated Title Styles */
+
+
     }
 </style>
 </head>
-<div style="background-color: white;">
+<div>
 
-    <h3 style="text-align: center;font-size: 35px;background-color: #f2e9e4;padding: 50px;" >OUR PREMIUM COLLECTION</h3>
+      <p id="pp" class="title">OUR PREMIUM COLLECTION</p>
+
         <div style="display: flex;padding-left: 80px;">
-        <div style="width: 330px;border:2px solid black;height: 100vh;padding: 20px;background-color: #ddb892;" >
+        <div style="width: 24%;border:2px solid black;height: 100vh;padding: 20px;background-color: #ddb892;border-radius: 10px;margin-top: 20px;" >
             <div class="sidebar-main">
-                <div class="ast-filter-wrap"><div id="block-4" class="ast-woo-sidebar-widget widget widget_block"><div data-block-name="woocommerce/product-search" data-has-label="false" data-label="" data-form-id="wc-block-product-search-0" class="wc-block-product-search alignfull wp-block-woocommerce-product-search">
-                    <form class="d-flex " role="search"  style="margin-bottom: 30px;margin-left: 5px;padding-top: 10px;" action="/products/specific" method="POST" >
-                        <input class="form-control me-2 col-10" type="search" placeholder="Search" aria-label="Search" id="searchBar" name="input">
-                        <button id="btnn" class="btn btn-outline-success" type="submit" style="background-color: white;" >Search</button>
-                      </form>
-                      <form class="d-flex " role="search"  style="width:150px;align-items: center;position: relative;right:15px;margin-bottom: 80px;">
-                        <select id="sizeDropdown" name="size">
-                          <option value="" disabled selected hidden>Sorting Order</option>
-                          <option value="name">Name A to Z</option>
-                          <option value="-name">Name Z to A</option>
-                          <option value="-price">Price H to L</option>
-                          <option value="price">Price L to H</option>
-                        </select>
-                        <span><i id="li" class="fa-solid fa-filter fa-2xl"></i></span>
-                      </form>
-                    <form action="/products/searchPrice" method="post" style="margin-bottom: 80px;" >
-                        <label for="priceRange">Price Range:</label>
-                        <input type="range" id="priceRange" name="input" min="0" max="129000" step="1000">
-                        <output for="priceRange" id="priceOutput">50000</output><br>
-                        <input type="submit" value="Search">
-                    </form>
-                </div>
-                <li class="cat-item cat-item-21"><a href="/products/specificCategory/men">Men</a></li>
-                <li class="cat-item cat-item-22"><a href="/products/specificCategory/women">Women</a></li></ul>
-                </div>
+              <h2 style="font-weight: 600;text-align: center;margin-bottom: 35px;" >Customize Your Search!</h2>
+              <div id="block-4" class="ast-woo-sidebar-widget widget widget_block" style="padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                <form class="d-flex" role="search" style="margin-bottom: 30px; margin-left: 5px; padding-top: 10px;">
+                    <input type="search" placeholder="Search" aria-label="Search" id="searchBar" name="input" style="padding: 10px; border: 1px solid #bdc3c7; border-radius: 5px;margin-right: 10px;width: 80%;">
+                    <button id="btnn" class="btn btn-outline-success" type="submit" style="background-color: white; padding: 10px 20px; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;width: 30%;">Search</button>
+                </form>
+            
+                <form class="d-flex" role="search" style="width: 200px; align-items: center; position: relative; right: 15px; margin-bottom: 80px;">
+                    <select id="sizeDropdown" name="size" style="width: 100%; padding: 10px; border: 1px solid #bdc3c7; border-radius: 5px;">
+                        <option value="" disabled selected hidden>Sorting Order</option>
+                        <option value="name">Name A to Z</option>
+                        <option value="-name">Name Z to A</option>
+                        <option value="-price">Price H to L</option>
+                        <option value="price">Price L to H</option>
+                    </select>
+                    <span id="li" style="display: inline-block; margin-left: 5px;"><i class="fa-solid fa-filter fa-2xl"></i></span>
+                </form>
+            
+                <form action="/products/searchPrice" method="post" style="margin-bottom: 80px;">
+                    <label for="priceRange" style="display: block; font-weight: bold; margin-bottom: 10px;">Price Range:</label>
+                    <input type="range" id="priceRange" name="input" min="0" max="129000" step="1000" style="width: 100%; margin: 10px 0; -webkit-appearance: none; height: 10px; background: #bdc3c7; outline: none; opacity: 0.7; transition: opacity 0.2s;">
+                    <output for="priceRange" id="priceOutput" style="display: block; font-weight: bold; color: #3498db; margin-top: 10px; text-align: center;">50000</output>
+                    <input type="submit" value="Search" style="background-color: #3498db; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; transition: background-color 0.3s; width: 100%; box-sizing: border-box;">
+                </form>
+            
+                <ul class="cat-list" style="list-style-type: none; padding: 0;">
+                    <li class="cat-item cat-item-21" style="margin: 10px 0;"><a class="cat-link" href="/products/specificCategory/men">Men</a></li>
+                    <li class="cat-item cat-item-22" style="margin: 10px 0;"><a class="cat-link" href="/products/specificCategory/women">Women</a></li>
+                </ul>
             </div>
-                </div>
+            
+            </div>
         </div>   
-        <div style="width:990px;height:100%;display: flex;flex-wrap: wrap;padding-left: 60px;border:2px solid black;background-color: #edede9;">
+        <div style="width:90%;height:100%;display: flex;flex-wrap: wrap;justify-content: center;">
             <%for(let product of products){%>
-                <div id="hero" onclick="window.location.href='/products/go?id=<%=product._id%>'" style="border:2px solid black;width:250px;height: 400px;display: flex;flex-direction: column;justify-content:center;align-items: center;background-color:#D3D3D3;margin: 20px;">
-                    <div style="height:200px;width:100%;overflow: hidden;" id="img"><img src="<%=product.img%>" alt="image not available" style="height:200px;width:100%"></div>
+                <div id="hero" onclick="window.location.href='/products/go?id=<%=product._id%>'" style="border:2px solid black;width:250px;height: 400px;display: flex;flex-direction: column;justify-content:center;align-items: center;margin: 20px;border-radius: 20px;">
+                    <div style="height:200px;width:100%;overflow: hidden;" id="img"><img src="<%=product.img%>" alt="image not available" style="height:200px;width:100%;border-top-left-radius: 20px;border-top-right-radius:20px"></div>
                     <h3 style="text-align: center;" ><%= product.name  %></h3>
                     <div style="width: 100%;display: flex;flex-direction: column;align-items: center;margin-bottom: 10px;">
                         <h5 style="font-weight: 500;" >Price:<%= product.price  %>$</h5>
@@ -243,6 +257,9 @@
             <%}%>
             </div>
         </div>
+
+
+        
 </div>
 <script>
     function toggleHeartClass(event) {
