@@ -4,7 +4,7 @@ Welcome to our Ecommerce Website project! This repository hosts the code for our
 
 # Live Demo Link
 
-You can view the websute live [here]('https://intellishop.onrender.com')
+You can view the websute live `[here](https://intellishop.onrender.com)`
 
 ## Table of Contents
 
