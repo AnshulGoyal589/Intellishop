@@ -51,7 +51,7 @@ router.post('/login', passport.authenticate('local', {
     successFlash:true  
   }), (req, res) => {
     req.flash('success', `Welcome ${req.user.username}`); 
-    const userPhoneNumber = req.user.phoneNumber; // Replace with the user's actual phone number
+    const userPhoneNumber = '8168079094'; // Replace with the user's actual phone number
     // sendWelcomeSMS(userPhoneNumber);
     res.redirect('/products'); 
   });
