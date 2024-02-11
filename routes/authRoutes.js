@@ -52,7 +52,7 @@ router.post('/login', passport.authenticate('local', {
   }), (req, res) => {
     req.flash('success', `Welcome ${req.user.username}`); 
     const userPhoneNumber = '8168079094'; // Replace with the user's actual phone number
-    // sendWelcomeSMS(userPhoneNumber);
+    sendWelcomeSMS(userPhoneNumber);
     res.redirect('/products'); 
   });
 
